@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.geniustechnoindia.androidcomponentuses.ui.fragments.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_categoryServiceFragment"
+            app:destination="@id/categoryServiceFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_categoryReceiverFragment"
+            app:destination="@id/categoryReceiverFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_categoryProviderFragment"
+            app:destination="@id/categoryProviderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryProviderFragment"
+        android:name="com.geniustechnoindia.androidcomponentuses.ui.fragments.CategoryProviderFragment"
+        android:label="fragment_category_provider"
+        tools:layout="@layout/fragment_category_provider" />
+    <fragment
+        android:id="@+id/categoryServiceFragment"
+        android:name="com.geniustechnoindia.androidcomponentuses.ui.fragments.CategoryServiceFragment"
+        android:label="fragment_category_service"
+        tools:layout="@layout/fragment_category_service" />
+    <fragment
+        android:id="@+id/categoryReceiverFragment"
+        android:name="com.geniustechnoindia.androidcomponentuses.ui.fragments.CategoryReceiverFragment"
+        android:label="fragment_category_receiver"
+        tools:layout="@layout/fragment_category_receiver" />
+</navigation>

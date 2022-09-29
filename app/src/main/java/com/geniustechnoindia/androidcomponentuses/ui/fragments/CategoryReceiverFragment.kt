@@ -3,12 +3,14 @@ package com.geniustechnoindia.androidcomponentuses.ui.fragments
 import android.bluetooth.BluetoothDevice
 import android.content.Intent
 import android.content.IntentFilter
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.geniustechnoindia.androidcomponentuses.Receiver.BluetoothStateReceiver
+import com.geniustechnoindia.androidcomponentuses.Receiver.NetworkConnectivityReceiver
 import com.geniustechnoindia.androidcomponentuses.databinding.FragmentCategoryReceiverBinding
 import com.sunitawebapp.locationonmap.adapter.TopicAdapter
 
@@ -16,7 +18,7 @@ import com.sunitawebapp.locationonmap.adapter.TopicAdapter
 class CategoryReceiverFragment : Fragment() {
    lateinit var binding : FragmentCategoryReceiverBinding
     lateinit  var topicAdapter : TopicAdapter
-
+   lateinit var networkconect : NetworkConnectivityReceiver
      var mBroadcastReceiver3 : BluetoothStateReceiver =BluetoothStateReceiver()
     var topiclist : ArrayList<String> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,8 +29,13 @@ class CategoryReceiverFragment : Fragment() {
 
         requireActivity().registerReceiver(mBroadcastReceiver3, filter3);
         requireActivity().sendBroadcast( Intent(requireContext(), BluetoothStateReceiver::class.java));
-    }
 
+         networkconect = NetworkConnectivityReceiver()
+        broadcastIntent()
+    }
+    fun broadcastIntent() {
+      requireActivity(). registerReceiver(networkconect, IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
